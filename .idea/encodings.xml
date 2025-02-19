@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/backEnd/Demande/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backEnd/EvenementActualite/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backEnd/RendezVous/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backEnd/donation/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backEnd/eureka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backEnd/gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backEnd/notification/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backEnd/utilisateur/src/main/java" charset="UTF-8" />
+  </component>
+</project>
