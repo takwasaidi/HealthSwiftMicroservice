@@ -31,7 +31,7 @@ Create, track, and manage fundraising campaigns with *goals* and *timelines*.
 ### 💳 Donations
 Securely donate to campaigns, with *history tracking* and *receipts*.
 
-### 📅 Events & Rendezvous
+### 📅 Events &  Meetings
 Schedule and manage *events/meetings* with details like *location* and *objectives*.
 
 ### 🔔 Notifications
