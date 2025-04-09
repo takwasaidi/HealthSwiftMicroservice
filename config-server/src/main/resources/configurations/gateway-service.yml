@@ -30,6 +30,10 @@ spring:
           predicates:
             - Path=/api/user/**
 
+        - id: actualite-server
+          uri: lb://actualite-server
+          predicates:
+            - Path=/api/Actualite/**
 
 
 

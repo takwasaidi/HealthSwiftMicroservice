@@ -7,9 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Evenement" />
         <module name="config-server" />
         <module name="Demande" />
-        <module name="EvenementActualite" />
         <module name="gatew" />
         <module name="utilisateur" />
         <module name="discovery" />
@@ -17,20 +17,22 @@
         <module name="donation" />
         <module name="microserviceInterview" />
         <module name="RendezVous" />
+        <module name="reclamation" />
       </profile>
-      <profile name="Annotation profile for notification" enabled="true">
+      <profile name="Annotation profile for reclamation" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
+        <module name="Actualite" />
         <module name="Student" />
-        <module name="notification" />
         <module name="user" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="notification" target="17" />
       <module name="springProject2" target="17" />
       <module name="tpFoyer-17" target="17" />
       <module name="userr" target="17" />
@@ -38,8 +40,9 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Actualite" options="-parameters" />
       <module name="Demande" options="-parameters" />
-      <module name="EvenementActualite" options="-parameters" />
+      <module name="Evenement" options="-parameters" />
       <module name="MicroserviceDocument" options="-parameters" />
       <module name="RendezVous" options="-parameters" />
       <module name="Student" options="-parameters" />
@@ -49,6 +52,7 @@
       <module name="gatew" options="-parameters" />
       <module name="microserviceInterview" options="-parameters" />
       <module name="notification" options="-parameters" />
+      <module name="reclamation" options="-parameters" />
       <module name="springProject2" options="-parameters" />
       <module name="tpFoyer-17" options="-parameters" />
       <module name="user" options="-parameters" />
