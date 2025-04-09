@@ -19,10 +19,14 @@
         <option value="$PROJECT_DIR$/RendezVous/pom.xml" />
         <option value="$PROJECT_DIR$/utilisateur/pom.xml" />
         <option value="$PROJECT_DIR$/EvenementActualite/pom.xml" />
+        <option value="$PROJECT_DIR$/Actualite/pom.xml" />
+        <option value="$PROJECT_DIR$/Evenement/pom.xml" />
+        <option value="$PROJECT_DIR$/reclamation/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/notification/pom.xml" />
         <option value="$PROJECT_DIR$/springProject2/pom.xml" />
         <option value="$PROJECT_DIR$/userr/pom.xml" />
       </set>
