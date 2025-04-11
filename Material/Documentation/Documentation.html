@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Gestion des Matériaux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            line-height: 1.7;
+            padding: 30px;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 2.4em;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            font-size: 1.2em;
+            color: #555;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            font-size: 1.4em;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+
+        p, li {
+            margin-bottom: 15px;
+        }
+
+        ol, ul {
+            padding-left: 20px;
+        }
+
+        pre {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95em;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f9ff;
+        }
+
+        a {
+            color: #e74c3c;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+    </style>
+</head>
+<body>
+<main>
+    <header>
+        <h1>🌟 Documentation - Gestion des Matériaux 🌟</h1>
+        <p class="intro">Bienvenue dans l'univers de la gestion des dons matériels ! Ce microservice vous permet de gérer efficacement les dons d’équipements médicaux, médicaments, et autres ressources essentielles pour le système de santé.</p>
+    </header>
+
+    <section>
+        <div class="section-header">🚀 Introduction</div>
+        <p>Le microservice <strong>material-service</strong> est conçu pour simplifier la gestion des dons matériels. Que ce soit pour ajouter un nouveau don, consulter les ressources disponibles ou mettre à jour les informations, tout est à portée de main grâce à des endpoints RESTful intuitifs.</p>
+        <p class="highlight">Prêt à faire une différence ? Commençons !</p>
+    </section>
+
+    <section>
+        <div class="section-header">🔗 Endpoints du Microservice</div>
+        <p>Voici la liste des endpoints disponibles pour interagir avec le microservice :</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Endpoint</th>
+                    <th>Description</th>
+                    <th>Méthode HTTP</th>
+                    <th>Exemple de Requête</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>/api/materials</td>
+                    <td>Créer un nouveau don matériel</td>
+                    <td>POST</td>
+                    <td><pre>{
+    "name": "Masques chirurgicaux",
+    "description": "Lot de 100 masques chirurgicaux",
+    "quantity": 100,
+    "donated_by": "Hôpital Central"
+}</pre></td>
+                </tr>
+                <tr>
+                    <td>/api/materials</td>
+                    <td>Récupérer tous les dons matériels</td>
+                    <td>GET</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>/api/materials/{id}</td>
+                    <td>Récupérer un don matériel par ID</td>
+                    <td>GET</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>/api/materials/{id}</td>
+                    <td>Mettre à jour un don matériel</td>
+                    <td>PUT</td>
+                    <td><pre>{
+    "name": "Lit médicalisé",
+    "description": "Lit médicalisé avec accessoires",
+    "quantity": 5,
+    "donated_by": "Clinique Saint-Jean"
+}</pre></td>
+                </tr>
+                <tr>
+                    <td>/api/materials/{id}</td>
+                    <td>Supprimer un don matériel</td>
+                    <td>DELETE</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <div class="section-header">🛠️ Comment Exécuter le Microservice</div>
+        <ol>
+            <li><strong>Étape 1 : Configurez votre environnement</strong>
+                <ul>
+                    <li>Installez <a href="https://nodejs.org/">Node.js</a></li>
+                    <li>Dans le dossier du projet, lancez :
+                        <pre>npm install</pre>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Étape 2 : Variables d’environnement</strong>
+                <ul>
+                    <li>Créez un fichier <code>.env</code> et ajoutez :
+                        <pre>
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=votre_mot_de_passe
+DB_NAME=healthcare_donation
+PORT=3000
+                        </pre>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Étape 3 : Démarrez le microservice</strong>
+                <ul>
+                    <li>Lancez :
+                        <pre>npm start</pre>
+                    </li>
+                    <li>Accédez à <code>http://localhost:3000</code></li>
+                </ul>
+            </li>
+            <li><strong>Étape 4 : Testez les endpoints</strong>
+                <ul>
+                    <li>Utilisez <a href="https://www.postman.com/">Postman</a> ou <code>cURL</code></li>
+                </ul>
+            </li>
+        </ol>
+        <p class="highlight">Vous êtes maintenant prêt à gérer les dons matériels avec succès !</p>
+    </section>
+
+    <section>
+        <div class="section-header">💡 Conseils Pratiques</div>
+        <ul>
+            <li>Assurez-vous que la base de données MySQL est active avant le lancement.</li>
+            <li>Pensez à <a href="https://swagger.io/">Swagger</a> ou <a href="https://www.electronjs.org/">Electron</a> pour construire une interface UI autour de l’API.</li>
+            <li>Documentez soigneusement toute modification du code source.</li>
+        </ul>
+    </section>
+
+    <footer>
+        &copy; 2025 Microservice Material-Service .
+    </footer>
+</main>
+</body>
+</html>

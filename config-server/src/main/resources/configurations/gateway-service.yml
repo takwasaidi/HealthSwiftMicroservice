@@ -35,6 +35,12 @@ spring:
           predicates:
             - Path=/api/Actualite/**
 
+        - id: material-service
+          uri: lb://material-service
+          predicates:
+            - Path=/api/materials/**
+
+
 
 
 
