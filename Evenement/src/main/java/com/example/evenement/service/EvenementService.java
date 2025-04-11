@@ -45,4 +45,10 @@ public class EvenementService {
         }
         return false;
     }
+    // Ajoutez d'autres méthodes pour gérer les événements
+    // filtrer, trier,
+
+    public Evenement getEvenementByTitre(String titre) {
+        return evenementRepository.findByTitre(titre);
+    }
 }
