@@ -58,12 +58,19 @@ public class UserService {
             {
                 userDTO.setUserId(userId);
                 System.out.println(userDTO.toString());
-                if (userDTO.getRole().equals("Student"))
-                {
-                    sendUserData(userDTO,"/Student/add");
-                    sendUserData(userDTO,"/users/signup");
-                }
 
+                if (userDTO.getRole().equals("ADMIN"))
+                {
+                    sendUserData(userDTO,"/user/signup");
+                }
+                if (userDTO.getRole().equals("DONATEUR"))
+                {
+                    sendUserData(userDTO,"/user/signup");
+                }
+                if (userDTO.getRole().equals("DIRECTEUR"))
+                {
+                    sendUserData(userDTO,"/user/signup");
+                }
             }
             return ResponseEntity.ok(Map.of("massage","User registered successfully!"));
         } catch (Exception e) {

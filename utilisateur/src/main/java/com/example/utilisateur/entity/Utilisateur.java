@@ -1,9 +1,6 @@
 package com.example.utilisateur.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,11 +13,11 @@ import lombok.Setter;
 @Setter
 public class Utilisateur {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     private String nom;
     private String prenom;
     private String email;
     private String password;
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }

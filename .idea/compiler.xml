@@ -19,16 +19,16 @@
         <module name="RendezVous" />
         <module name="reclamation" />
       </profile>
-      <profile name="Annotation profile for reclamation" enabled="true">
+      <profile name="Annotation profile for Actualite" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
-        <module name="Actualite" />
         <module name="Student" />
         <module name="user" />
+        <module name="Actualite" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
