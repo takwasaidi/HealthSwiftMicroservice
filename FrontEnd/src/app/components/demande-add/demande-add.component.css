@@ -1,0 +1,11 @@
+.btn-custom {
+    background-color: rgb(119, 182, 202);
+    border-color: rgb(119, 182, 202);
+    color: white;
+  }
+  
+  .btn-custom:hover {
+    background-color: rgb(100, 160, 190); /* Couleur légèrement plus foncée pour le hover */
+    border-color: rgb(100, 160, 190);
+  }
+  

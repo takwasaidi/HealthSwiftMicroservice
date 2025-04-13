@@ -1,0 +1,31 @@
+.btn-outline-custom {
+    color: rgb(56, 141, 168);
+    border: 1px solid rgb(56, 141, 168);
+    background-color: transparent;
+    transition: 0.3s ease;
+  }
+  
+  .btn-outline-custom:hover {
+    background-color: rgb(56, 141, 168);.btn-outline-custom {
+        color: rgb(56, 141, 168);
+        border-color: rgb(56, 141, 168);
+      }
+      
+      .btn-outline-custom:hover {
+        background-color: rgb(56, 141, 168);
+        color: white;
+        border-color: rgb(56, 141, 168);
+      }
+      
+    color: white;
+  }
+  .btn-outline-custom {
+    border: 1px solid rgb(56, 141, 168);
+    color: rgb(56, 141, 168);
+  }
+  
+  .btn-outline-custom:hover {
+    background-color: rgb(56, 141, 168);
+    color: #fff;
+  }
+  

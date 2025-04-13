@@ -3,26 +3,31 @@
 
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let don of dons">
-      <div class="card h-100 shadow-sm">
-        <!-- Image de donation -->
-        <img src="assets/img/donation.jpg" class="card-img-top" alt="Image donation" style="height: 200px; object-fit: cover;">
+      <div class="card h-100 shadow-sm hover-shadow" style="cursor: pointer;">
+        <!-- Toute la carte sauf les boutons est cliquable -->
+        <a [routerLink]="['/don', don.id]" class="text-decoration-none text-dark">
+          <img src="assets/img/donation.jpg" class="card-img-top" alt="Image donation" style="height: 200px; object-fit: cover;">
 
-        <div class="card-body">
-          <h5 class="card-title">Don #{{ don.id }}</h5>
-          <p class="card-text"><strong>Montant:</strong> {{ don.montant }} DH</p>
-          <p class="card-text"><strong>Date Remise:</strong> {{ don.date_remise | date:'dd/MM/yyyy' }}</p>
-          <p class="card-text"><strong>Type:</strong> {{ don.type }}</p>
-          <p class="card-text"><strong>Campagne:</strong> {{ don.campagne?.titre || 'N/A' }}</p>
+          <div class="card-body">
+            <h5 class="card-title">Don #{{ don.id }}</h5>
+            <p class="card-text"><strong>Montant:</strong> {{ don.montant }} DH</p>
+            <p class="card-text"><strong>Date Remise:</strong> {{ don.date_remise | date:'dd/MM/yyyy' }}</p>
+            <p class="card-text"><strong>Type:</strong> {{ don.type }}</p>
+          </div>
+        </a>
 
-          <!-- Icônes de mise à jour et suppression, alignées à droite -->
-          <div class="d-flex justify-content-end mt-3">
-            <!-- Icône de mise à jour -->
-            <a [routerLink]="['/don/update', don.id]" class="btn btn-outline-custom btn-sm me-2" title="Mettre à jour">
+        <!-- Boutons d'action sous la carte -->
+        <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center px-3 pb-3">
+          <!-- Si le don n'est pas affecté à une campagne -->
+          <ng-container *ngIf="!don.campagne">
+            <a [routerLink]="['/demandeAdd', don.id]" class="btn btn-custom btn-sm">Passer une demande</a>
+          </ng-container>
+
+          <div class="d-flex gap-2">
+            <a [routerLink]="['/don/update', don.id]" class="btn btn-outline-custom btn-sm" title="Mettre à jour">
               <i class="fas fa-edit"></i>
             </a>
-            
 
-            <!-- Icône de suppression -->
             <button (click)="deleteDon(don.id)" class="btn btn-outline-danger btn-sm" title="Supprimer">
               <i class="fas fa-trash-alt"></i>
             </button>

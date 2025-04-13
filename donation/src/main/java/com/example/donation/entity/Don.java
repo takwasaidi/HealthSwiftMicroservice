@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -24,4 +25,5 @@ public class Don {
     private String type;
    @ManyToOne
     private Campagne campagne;
+
 }

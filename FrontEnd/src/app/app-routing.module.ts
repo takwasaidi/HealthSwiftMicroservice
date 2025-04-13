@@ -10,6 +10,11 @@ import { CampagneDetailsComponent } from './components/campagne-details/campagne
 import { CampagneEditComponent } from './components/campagne-edit/campagne-edit.component';
 import { AddDonComponent } from './components/add-don/add-don.component';
 import { EditDonComponent } from './components/edit-don/edit-don.component';
+import { CampagneAddComponent } from './components/campagne-add/campagne-add.component';
+import { DemandeListComponent } from './components/demande-list/demande-list.component';
+import { DemandeAddComponent } from './components/demande-add/demande-add.component';
+import { DemandeUpdateComponent } from './components/demande-update/demande-update.component';
+import { DonDetailsComponent } from './components/don-details/don-details.component';
 
 
 
@@ -19,6 +24,8 @@ const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'don', component: DonComponent },
   { path: 'campagne', component: CampagneComponent },
+  { path: 'demandes', component: DemandeListComponent },
+  { path: 'campagneAdd', component: CampagneAddComponent },
   { path: 'campagnes/:id', component: CampagneDetailsComponent },
   {
     path: 'campagnes/update/:id',
@@ -33,6 +40,14 @@ const routes: Routes = [
     path: 'donsAdd',
     component: AddDonComponent
   }
+,
+{ path: 'demandeAdd', component: DemandeAddComponent }
+,
+{ path: 'demandeAdd/:donId', component: DemandeAddComponent }
+,
+{ path: 'demandeUpdate/:id', component: DemandeUpdateComponent }
+,
+{ path: 'don/:id', component: DonDetailsComponent }
 ,
 { path: 'don/update/:id', component: EditDonComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' }

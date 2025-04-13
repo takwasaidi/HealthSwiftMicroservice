@@ -36,6 +36,11 @@ import { AddDonComponent } from './components/add-don/add-don.component';
 import { DatePipe } from '@angular/common';
 import { DonComponent } from './components/don/don.component';
 import { EditDonComponent } from './components/edit-don/edit-don.component';
+import { CampagneAddComponent } from './components/campagne-add/campagne-add.component';
+import { DemandeListComponent } from './components/demande-list/demande-list.component';
+import { DemandeAddComponent } from './components/demande-add/demande-add.component';
+import { DemandeUpdateComponent } from './components/demande-update/demande-update.component';
+import { DonDetailsComponent } from './components/don-details/don-details.component';
 
 
 @NgModule({
@@ -51,7 +56,12 @@ import { EditDonComponent } from './components/edit-don/edit-don.component';
     CampagneEditComponent,
     AddDonComponent,
     DonComponent,
-    EditDonComponent
+    EditDonComponent,
+    CampagneAddComponent,
+    DemandeListComponent,
+    DemandeAddComponent,
+    DemandeUpdateComponent,
+    DonDetailsComponent
   ],
   imports:[
     ReactiveFormsModule,

@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <h2 class="mb-4 text-center">Liste des Demandes</h2>
+
+  <div *ngFor="let d of demandes" class="card shadow-sm mb-3 p-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+      
+      <!-- Infos à gauche -->
+      <div class="me-3 flex-grow-1">
+        <h5 class="mb-2 text-primary">{{ d.titre }}</h5>
+        <p class="mb-1">{{ d.description }}</p>
+        <p class="mb-1"><strong>Date :</strong> {{ d.date | date:'dd/MM/yyyy' }}</p>
+        <p class="mb-0">
+          <strong>Statut :</strong> 
+          <span class="badge"
+                [ngClass]="{
+                  'bg-secondary': d.statut === 'En attente',
+                  'bg-success': d.statut === 'Approuvée',
+                  'bg-danger': d.statut === 'Rejetée'
+                }">{{ d.statut }}</span>
+        </p>
+      </div>
+
+      <!-- Boutons à droite -->
+      <div class="d-flex gap-2 mt-3 mt-md-0">
+        <button (click)="update(d.id!)" class="btn btn-outline-custom btn-sm">
+          <i class="fas fa-edit"></i> Modifier
+        </button>
+        <button (click)="supprimer(d.id!)" class="btn btn-outline-danger btn-sm">
+          <i class="fas fa-trash-alt"></i> Supprimer
+        </button>
+      </div>
+      
+    </div>
+  </div>
+</div>
