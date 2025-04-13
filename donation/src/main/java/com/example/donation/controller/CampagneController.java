@@ -1,15 +1,22 @@
 package com.example.donation.controller;
 
 import com.example.donation.entity.Campagne;
+import com.example.donation.entity.CampagneRequestDTO;
+import com.example.donation.entity.UtilisateurDTO;
 import com.example.donation.service.CampagneService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -32,37 +39,18 @@ public class CampagneController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-
-    @PostMapping
-    public Campagne createCampagne(@RequestParam("titre") String titre,
-                                   @RequestParam("objectif") String objectif,
-                                   @RequestParam("date_debut") String date_debut,
-                                   @RequestParam("date_fin") String date_fin,
-                                   @RequestParam("image") MultipartFile image) {
-        System.out.println("Titre: " + titre);
-        System.out.println("Objectif: " + objectif);
-        System.out.println("Date début: " + date_debut);
-        System.out.println("Date fin: " + date_fin);
-        System.out.println("Image: " + image.getOriginalFilename());
-        // Créer un objet Campagne
-        Campagne campagne = new Campagne();
-
-        // Assignation des valeurs simples
-        campagne.setTitre(titre);
-        campagne.setObjectif(objectif);
-
-        // Conversion des chaînes de caractères en LocalDate
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");  // Ajuster le format si nécessaire
-        LocalDate dateDebut = LocalDate.parse(date_debut, formatter);
-        LocalDate dateFin = LocalDate.parse(date_fin, formatter);
-
-        // Affecter les dates à l'objet Campagne
-        campagne.setDate_debut(dateDebut);
-        campagne.setDate_fin(dateFin);
-
-        // Appel au service pour créer la campagne avec l'image
-        return campagneService.createCampagne(campagne, image);
+    @GetMapping("/utilisateur/{id}")
+    public UtilisateurDTO getUtilisateurInfo(@PathVariable String id) {
+        return campagneService.getInfosUtilisateurPourCampagne(id);
     }
+
+    @PostMapping("/add")
+    public ResponseEntity<Campagne> ajouterCampagne(@RequestBody CampagneRequestDTO dto ,@RequestHeader("userId") String userId) {
+        Campagne campagneCreee = campagneService.ajouterCampagne(dto,userId);
+        return ResponseEntity.ok(campagneCreee);
+    }
+
+
 
 
     @PutMapping("/{id}")

@@ -24,4 +24,6 @@ public class Demande {
     private String description;
     private LocalDate date;
     private String statut;
+    private Long donId;
+    private String utilisateurId;
 }

@@ -24,6 +24,7 @@ public class Campagne {
     private String objectif;
     private LocalDate date_debut;
     private LocalDate date_fin;
+    private String utilisateurId;
     @OneToMany(mappedBy = "campagne")
     @JsonIgnore
     private List<Don> dons;

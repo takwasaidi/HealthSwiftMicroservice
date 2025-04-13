@@ -2,13 +2,28 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+export interface CampagneRequest {
+  titre: string;
+  image: string;
+  objectif: string;
+  date_debut: string; // format 'YYYY-MM-DD'
+  date_fin: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class CampagneService {
   private apiUrl = 'http://localhost:8222/api/don/campagne';
 
   constructor(private http: HttpClient) {}
+
+
+  ajouterCampagne(campagne: CampagneRequest): Observable<any> {
+    return this.http.post(`${this.apiUrl}/add`, campagne);
+  }
+
 
   getAll(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);

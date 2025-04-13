@@ -1,6 +1,7 @@
 package com.example.donation.controller;
 
 import com.example.donation.entity.Don;
+import com.example.donation.entity.DonWithDemandesDTO;
 import com.example.donation.service.DonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -51,5 +52,10 @@ public class DonController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/getDonWithDemandes/{donId}")
+    public DonWithDemandesDTO getDonWithDemandes(@PathVariable("donId") Long donId) {
+        return donService.getDonWithDemandes(donId);
     }
 }

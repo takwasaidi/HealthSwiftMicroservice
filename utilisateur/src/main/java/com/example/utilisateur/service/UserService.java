@@ -34,4 +34,12 @@ public class UserService {
         }
         return false;
     }
+    //forinternship
+    public List<String> getAllUsersID() {
+        return userRepository.findAllUserIds();
+    }
+    public String getUserEmail(String userId){
+        return userRepository.findEmailByUserId(userId);
+    }
+
 }

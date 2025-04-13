@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Ajouter une Campagne</h2>
+    <form (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+      <div class="mb-3">
+        <label for="titre" class="form-label">Titre</label>
+        <input type="text" class="form-control" id="titre" [(ngModel)]="campagne.titre" name="titre" required />
+      </div>
+  
+      <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input type="file" class="form-control" id="image" (change)="onFileSelected($event)" required />
+      </div>
+      
+
+      <div class="mb-3">
+        <label for="objectif" class="form-label">Objectif</label>
+        <input type="text" class="form-control" id="objectif" [(ngModel)]="campagne.objectif" name="objectif" required />
+      </div>
+  
+      <div class="mb-3">
+        <label for="date_debut" class="form-label">Date début</label>
+        <input type="date" class="form-control" id="date_debut" [(ngModel)]="campagne.date_debut" name="date_debut" required />
+      </div>
+  
+      <div class="mb-3">
+        <label for="date_fin" class="form-label">Date fin</label>
+        <input type="date" class="form-control" id="date_fin" [(ngModel)]="campagne.date_fin" name="date_fin" required />
+      </div>
+  
+      <!-- Centrer le bouton -->
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-custom">Ajouter</button>
+      </div>
+  
+    </form>
+  
+    <p *ngIf="message" class="mt-3 text-center">{{ message }}</p>
+  </div>
+  
