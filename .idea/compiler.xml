@@ -17,6 +17,7 @@
         <module name="donation" />
         <module name="microserviceInterview" />
         <module name="RendezVous" />
+        <module name="Actualite" />
         <module name="reclamation" />
       </profile>
       <profile name="Annotation profile for Actualite" enabled="true">
@@ -28,7 +29,6 @@
         </processorPath>
         <module name="Student" />
         <module name="user" />
-        <module name="Actualite" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

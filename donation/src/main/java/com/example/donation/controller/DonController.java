@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/don")
-@CrossOrigin(origins = "*")
 public class DonController {
     @Autowired
     private DonService donService;
@@ -29,9 +28,9 @@ public class DonController {
     }
 
 
-    @PostMapping
-    public Don createDon(@RequestBody Don don) {
-        return donService.createDon(don);
+    @PostMapping("/{idCampagne}")
+    public Don createDon(@RequestBody Don don , @PathVariable("idCampagne") Long idCampagne) {
+        return donService.createDon(don,idCampagne);
     }
 
     @PutMapping("/{id}")

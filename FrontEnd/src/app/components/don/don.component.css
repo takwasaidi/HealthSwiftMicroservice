@@ -1,0 +1,18 @@
+.card {
+    border-radius: 12px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  .btn-outline-custom {
+    border-color: rgb(119, 182, 202);
+    color: rgb(119, 182, 202);
+  }
+  
+  .btn-outline-custom:hover {
+    background-color: rgb(119, 182, 202);
+    color: white;
+  }
+  

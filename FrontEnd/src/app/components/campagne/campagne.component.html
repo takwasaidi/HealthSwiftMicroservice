@@ -1,0 +1,19 @@
+<div class="container">
+  <h2 class="mb-4">Liste des Campagnes</h2>
+
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let campagne of campagnes">
+      <a [routerLink]="['/campagnes', campagne.id]" class="text-decoration-none text-dark">
+        <div class="card h-100 shadow-sm">
+          <img [src]="'./assets/uploads/' + campagne.image" class="card-img-top" alt="Image de la campagne" />
+          <div class="card-body">
+            <h5 class="card-title">{{ campagne.titre }}</h5>
+            <p class="card-text"><strong>Objectif:</strong> {{ campagne.objectif }}</p>
+            <p class="card-text"><strong>Début:</strong> {{ campagne.date_debut }}</p>
+            <p class="card-text"><strong>Fin:</strong> {{ campagne.date_fin }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

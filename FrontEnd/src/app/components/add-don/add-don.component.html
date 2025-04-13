@@ -1,0 +1,29 @@
+<div class="container">
+    <h2>Ajouter un Don</h2>
+    <form [formGroup]="donForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="montant">Montant</label>
+        <input formControlName="montant" id="montant" class="form-control" placeholder="Montant" />
+      </div>
+  
+      <div class="form-group">
+        <label for="dateRemise">Date de remise</label>
+        <input formControlName="dateRemise" id="dateRemise" type="date" class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="type">Type</label>
+        <input formControlName="type" id="type" class="form-control" placeholder="Type" />
+      </div>
+  
+      <div class="form-group">
+        <label for="campagneId">Campagne</label>
+        <select formControlName="campagneId" id="campagneId" class="form-control">
+          <option *ngFor="let campagne of campagnes" [value]="campagne.id">{{ campagne.titre }}</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn" style="background-color: rgb(56, 141, 168); color: white;">Ajouter le Don</button>
+    </form>
+  </div>
+  

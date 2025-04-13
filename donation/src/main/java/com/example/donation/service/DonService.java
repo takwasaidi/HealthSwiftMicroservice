@@ -1,7 +1,10 @@
 package com.example.donation.service;
 
+import com.example.donation.entity.Campagne;
 import com.example.donation.entity.Don;
+import com.example.donation.repository.CampagneRepository;
 import com.example.donation.repository.DonRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,8 @@ public class DonService {
 
     @Autowired
     private DonRepository donRepository;
+    @Autowired
+    private CampagneRepository campagneRepository;
 
     public List<Don> getAllDons() {
         return donRepository.findAll();
@@ -22,7 +27,10 @@ public class DonService {
         return donRepository.findById(id);
     }
 
-    public Don createDon(Don don) {
+    public Don createDon(Don don , Long idCampagne) {
+        Campagne campagne = campagneRepository.findById(idCampagne)
+                .orElseThrow(() -> new EntityNotFoundException("Catégorie non trouvée"));
+         don.setCampagne(campagne);
         return donRepository.save(don);
     }
 
