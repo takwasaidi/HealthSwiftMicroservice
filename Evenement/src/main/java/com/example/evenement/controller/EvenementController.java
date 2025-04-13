@@ -49,4 +49,10 @@ public class EvenementController {
             return ResponseEntity.notFound().build();
         }
     }
-}
+
+    @PostMapping("/search")
+    public Evenement getEvenementByTitre(@RequestBody String titre) {
+        return evenementService.getEvenementByTitre(titre);
+    }
+
+    }
