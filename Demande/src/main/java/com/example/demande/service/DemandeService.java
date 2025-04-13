@@ -25,7 +25,7 @@ public class DemandeService {
    // @Scheduled(cron = "*/10 * * * * ?")
     @Scheduled(cron = "0 0 9 * * ?")
     public void notifyRefusedDemandesUsers() {
-        List<Demande> refusedDemandes = demandeRepository.findByStatut("refuse");
+        List<Demande> refusedDemandes = demandeRepository.findByStatut("Rejetee");
 
         for (Demande demande : refusedDemandes) {
             String userId = demande.getUtilisateurId(); // suppose que ta Demande a un champ userId
