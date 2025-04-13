@@ -4,5 +4,13 @@ spring:
   application:
     name: donation-server
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
 
-
+server:
+  port: 8092
+upload:
+  directory: C:/Users/TAYSSIR/Desktop/takwamicro/healthswiftneww/HealthSwiftMicroservice/FrontEnd/src/assets/uploads

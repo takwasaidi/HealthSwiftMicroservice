@@ -1,0 +1,28 @@
+<div class="container mt-4" *ngIf="campagne">
+    <div class="card">
+      <img [src]="'/assets/uploads/' + campagne.image" class="card-img-top" />
+      <div class="card-body">
+        <h3>{{ campagne.titre }}</h3>
+        <p><strong>Objectif :</strong> {{ campagne.objectif }}</p>
+        <p><strong>Date début :</strong> {{ campagne.date_debut }}</p>
+        <p><strong>Date fin :</strong> {{ campagne.date_fin }}</p>
+  
+        <!-- Boutons personnalisés -->
+        <div class="mt-3 d-flex justify-content-between">
+          <button class="btn text-white" 
+                  [style.backgroundColor]="'rgb(56, 141, 168)'" 
+                  (click)="onUpdate()">
+            📝 Modifier
+          </button>
+  
+          <button class="btn" 
+                  [style.color]="'rgb(56, 141, 168)'" 
+                  [style.border]="'1px solid rgb(56, 141, 168)'" 
+                  (click)="onDelete()">
+            🗑 Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,5 +1,6 @@
 package com.example.donation.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,5 +25,6 @@ public class Campagne {
     private LocalDate date_debut;
     private LocalDate date_fin;
     @OneToMany(mappedBy = "campagne")
+    @JsonIgnore
     private List<Don> dons;
 }

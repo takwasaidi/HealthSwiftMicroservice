@@ -7,7 +7,58 @@ spring:
         jwt:
           issuer-uri: http://localhost:8080/realms/Auth
           jwk-set-uri: http://localhost:8080/realms/Auth/protocol/openid-connect/certs
-  config:
-    import: optional:configserver:http://localhost:8888
   application:
     name: gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: actualite-server
+          uri: lb://actualite-server
+          predicates:
+            - Path=/api/Actualite/**
+        - id: evenementactualite-server
+          uri: lb://evenementactualite-server
+          predicates:
+            - Path=/api/evenement/**
+        - id: reclamation-server
+          uri: lb://reclamation-server
+          predicates:
+            - Path=/api/reclamations/**
+        - id: rendezVous-server
+          uri: lb://rendezVous-server
+          predicates:
+            - Path=/api/rendezVous/**
+        - id: utilisateur-server
+          uri: lb://utilisateur-server
+          predicates:
+            - Path=/api/users/**
+        - id: demande-server
+          uri: lb://demande-server
+          predicates:
+            - Path=/api/demande/**
+
+        - id: donation-server
+          uri: lb://donation-server
+          predicates:
+            - Path=/api/don/**
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+server:
+  port: 8222
+# Keycloak Configuration
+keycloak:
+  enabled: true
+  auth-server-url: http://localhost:8180/auth
+  realm: Auth
+  resource: praktika-Auth
+  public-client: true
+  principal-attribute: preferred_username
+####################
