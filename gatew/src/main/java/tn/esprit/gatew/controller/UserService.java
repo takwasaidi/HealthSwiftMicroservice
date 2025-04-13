@@ -61,15 +61,15 @@ public class UserService {
 
                 if (userDTO.getRole().equals("ADMIN"))
                 {
-                    sendUserData(userDTO,"/user/signup");
+                    sendUserData(userDTO,"/users/signup");
                 }
                 if (userDTO.getRole().equals("DONATEUR"))
                 {
-                    sendUserData(userDTO,"/user/signup");
+                    sendUserData(userDTO,"/users/signup");
                 }
                 if (userDTO.getRole().equals("DIRECTEUR"))
                 {
-                    sendUserData(userDTO,"/user/signup");
+                    sendUserData(userDTO,"/users/signup");
                 }
             }
             return ResponseEntity.ok(Map.of("massage","User registered successfully!"));
