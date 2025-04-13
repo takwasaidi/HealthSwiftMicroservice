@@ -13,11 +13,12 @@ import lombok.Setter;
 @Setter
 public class Utilisateur {
     @Id
-    private String id;
-    private String nom;
-    private String prenom;
-    private String email;
-    private String password;
+    String userId;
+    String email;
+    String password;
+    String name;
+    private String phone;
+    private String address;
     @Enumerated(EnumType.STRING)
     private Role role;
 }

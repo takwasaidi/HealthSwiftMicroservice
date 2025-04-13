@@ -26,15 +26,7 @@ public class UserService {
         return userRepository.save(Utilisateur);
     }
 
-    public Utilisateur updateUtilisateur(String id, Utilisateur updatedUtilisateur) {
-        return userRepository.findById(id).map(Utilisateur -> {
-            Utilisateur.setNom(updatedUtilisateur.getNom());
-            Utilisateur.setPrenom(updatedUtilisateur.getPrenom());
-            Utilisateur.setRole(updatedUtilisateur.getRole());
-            Utilisateur.setEmail(updatedUtilisateur.getEmail());
-            return userRepository.save(Utilisateur);
-        }).orElse(null);
-    }
+
 
     public boolean deleteUtilisateur(String id) {
         if (userRepository.existsById(id)) {
