@@ -1,0 +1,144 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>Gestion des Événements</h2>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#evenementModal" (click)="onOpenAddForm()">Ajouter un événement</button>
+    </div>
+  
+   <!-- Recherche d'événements -->
+   <div class="search-container mb-4 p-3 bg-light rounded">
+    <form (ngSubmit)="onSearchByTitle()">
+      <div class="row g-3 align-items-center">
+        <div class="col-md-8">
+          <input type="text" class="form-control" [(ngModel)]="searchTitle" name="searchTitle" placeholder="Rechercher par titre...">
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-outline-secondary" type="submit">
+            <i class="bi bi-search"></i> Rechercher
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+    
+    <div *ngIf="evenementList.length === 0">Aucun événement trouvé.</div>
+  
+    <table class="table table-striped" *ngIf="evenementList.length > 0">
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Lieu</th>
+          <th>Durée</th>
+          <th>Objectif</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evenement of evenementList; let i = index">
+          <td>{{ evenement.title }}</td>
+          <td>{{ evenement.description }}</td>
+          <td>{{ evenement.date }}</td>
+          <td>{{ evenement.lieu }}</td>
+          <td>{{ evenement.duree }}</td>
+          <td>{{ evenement.objective }}</td>
+          <td><img [src]="evenement.image" style="max-width: 100px;"></td>
+          <td>
+            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#evenementModal" (click)="onSelectEvenement(evenement, i)">Modifier</button>
+            <button class="btn btn-danger btn-sm" (click)="onDeleteEvenement(i)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="evenementModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{ isEditMode ? 'Modifier' : 'Ajouter' }} un événement</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="evenementForm">
+              <!-- Title -->
+              <div class="mb-3">
+                <label class="form-label">Titre</label>
+                <input type="text" class="form-control" formControlName="title">
+                <div class="text-danger" *ngIf="evenementForm.get('title')?.touched && evenementForm.get('title')?.invalid">
+                  <div *ngIf="evenementForm.get('title')?.errors?.['required']">Le titre est requis.</div>
+                  <div *ngIf="evenementForm.get('title')?.errors?.['minlength']">Minimum 4 caractères.</div>
+                </div>
+              </div>
+  
+              <!-- Description -->
+              <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" formControlName="description"></textarea>
+                <div class="text-danger" *ngIf="evenementForm.get('description')?.touched && evenementForm.get('description')?.invalid">
+                  <div *ngIf="evenementForm.get('description')?.errors?.['required']">La description est requise.</div>
+                  <div *ngIf="evenementForm.get('description')?.errors?.['minlength']">Minimum 10 caractères.</div>
+                </div>
+              </div>
+  
+              <!-- Date -->
+              <div class="mb-3">
+                <label class="form-label">Date</label>
+                <input type="date" class="form-control" formControlName="date">
+                <div class="text-danger" *ngIf="evenementForm.get('date')?.touched && evenementForm.get('date')?.invalid">
+                  La date est requise.
+                </div>
+              </div>
+  
+              <!-- Lieu -->
+              <div class="mb-3">
+                <label class="form-label">Lieu</label>
+                <input type="text" class="form-control" formControlName="lieu">
+                <div class="text-danger" *ngIf="evenementForm.get('lieu')?.touched && evenementForm.get('lieu')?.invalid">
+                  <div *ngIf="evenementForm.get('lieu')?.errors?.['required']">Le lieu est requis.</div>
+                  <div *ngIf="evenementForm.get('lieu')?.errors?.['minlength']">Minimum 3 caractères.</div>
+                </div>
+              </div>
+  
+              <!-- Durée -->
+              <div class="mb-3">
+                <label class="form-label">Durée</label>
+                <input type="text" class="form-control" formControlName="duree">
+                <div class="text-danger" *ngIf="evenementForm.get('duree')?.touched && evenementForm.get('duree')?.invalid">
+                  <div *ngIf="evenementForm.get('duree')?.errors?.['required']">La durée est requise.</div>
+                  <div *ngIf="evenementForm.get('duree')?.errors?.['minlength']">Minimum 1 numero.</div>
+                </div>
+              </div>
+  
+              <!-- Objectif -->
+              <div class="mb-3">
+                <label class="form-label">Objectif</label>
+                <textarea class="form-control" formControlName="objective"></textarea>
+                <div class="text-danger" *ngIf="evenementForm.get('objective')?.touched && evenementForm.get('objective')?.invalid">
+                  <div *ngIf="evenementForm.get('objective')?.errors?.['required']">L’objectif est requis.</div>
+                  <div *ngIf="evenementForm.get('objective')?.errors?.['minlength']">Minimum 5 caractères.</div>
+                </div>
+              </div>
+  
+              <!-- Image -->
+              <div class="mb-3">
+                <label class="form-label">Image</label>
+                <input type="file" class="form-control" (change)="onImageSelected($event)">
+                <img *ngIf="imageUrl" [src]="imageUrl" class="img-fluid mt-2" style="max-height: 100px;">
+                <div class="text-danger mt-1" *ngIf="imageError">L’image est requise.</div>
+              </div>
+  
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            <button class="btn btn-success" (click)="onAddOrUpdateEvenement()">
+              {{ isEditMode ? 'Mettre à jour' : 'Ajouter' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

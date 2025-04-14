@@ -10,6 +10,7 @@ import { CampagneDetailsComponent } from './components/campagne-details/campagne
 import { CampagneEditComponent } from './components/campagne-edit/campagne-edit.component';
 import { AddDonComponent } from './components/add-don/add-don.component';
 import { EditDonComponent } from './components/edit-don/edit-don.component';
+import { EvenementComponent } from './components/evenement/evenement.component';
 
 
 
@@ -35,6 +36,7 @@ const routes: Routes = [
   }
 ,
 { path: 'don/update/:id', component: EditDonComponent },
+{path:'evenement',component:EvenementComponent},
   { path: '', redirectTo: '/', pathMatch: 'full' }
 ];
 

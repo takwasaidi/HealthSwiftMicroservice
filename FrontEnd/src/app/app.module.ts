@@ -36,6 +36,7 @@ import { AddDonComponent } from './components/add-don/add-don.component';
 import { DatePipe } from '@angular/common';
 import { DonComponent } from './components/don/don.component';
 import { EditDonComponent } from './components/edit-don/edit-don.component';
+import { EvenementComponent } from './components/evenement/evenement.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { EditDonComponent } from './components/edit-don/edit-don.component';
     CampagneEditComponent,
     AddDonComponent,
     DonComponent,
-    EditDonComponent
+    EditDonComponent,
+    EvenementComponent
   ],
   imports:[
     ReactiveFormsModule,
@@ -73,6 +75,7 @@ import { EditDonComponent } from './components/edit-don/edit-don.component';
     CalendarModule.forRoot({ provide: DateAdapter, useClass: MatNativeDateModule }),
     BrowserAnimationsModule,
     MatButtonModule,
+    FormsModule // Ajoutez FormsModule ici
   ],
   providers: [
     DatePipe, // ✅ Ajouté proprement ici
