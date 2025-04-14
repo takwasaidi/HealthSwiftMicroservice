@@ -30,8 +30,8 @@ public class DonController {
 
 
     @PostMapping("/{idCampagne}")
-    public Don createDon(@RequestBody Don don , @PathVariable("idCampagne") Long idCampagne) {
-        return donService.createDon(don,idCampagne);
+    public Don createDon(@RequestBody Don don , @PathVariable("idCampagne") Long idCampagne,@RequestHeader String userId) {
+        return donService.createDon(don,idCampagne,userId);
     }
 
     @PutMapping("/{id}")

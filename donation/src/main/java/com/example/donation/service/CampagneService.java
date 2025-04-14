@@ -2,9 +2,7 @@ package com.example.donation.service;
 
 import com.example.donation.entity.Campagne;
 import com.example.donation.entity.CampagneRequestDTO;
-import com.example.donation.entity.UtilisateurDTO;
 import com.example.donation.repository.CampagneRepository;
-import com.example.donation.client.UtilisateurClient;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,15 +15,9 @@ public class CampagneService {
 
     @Autowired
     private CampagneRepository campagneRepository;
-    private final UtilisateurClient utilisateurClient;
 
-    public CampagneService(UtilisateurClient utilisateurClient) {
-        this.utilisateurClient = utilisateurClient;
-    }
 
-    public UtilisateurDTO getInfosUtilisateurPourCampagne(String utilisateurId) {
-        return utilisateurClient.getUtilisateurById(utilisateurId);
-    }
+
 
 
     public Campagne ajouterCampagne(CampagneRequestDTO dto ,String userId) {

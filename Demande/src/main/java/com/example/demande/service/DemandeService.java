@@ -22,7 +22,7 @@ public class DemandeService {
 
     @Autowired
     private EmailService emailService; // Ton service d'envoi d'e-mail
-   // @Scheduled(cron = "*/10 * * * * ?")
+     @Scheduled(cron = "*/10 * * * * ?")
     @Scheduled(cron = "0 0 9 * * ?")
     public void notifyRefusedDemandesUsers() {
         List<Demande> refusedDemandes = demandeRepository.findByStatut("Rejetee");
@@ -43,8 +43,6 @@ public class DemandeService {
             }
         }
     }
-
-
     // Fonction pour récupérer les demandes associées à un Don donné
     public List<DemandeDTO> getDemandesByDonId(Long donId) {
         // Récupérer les demandes associées au don

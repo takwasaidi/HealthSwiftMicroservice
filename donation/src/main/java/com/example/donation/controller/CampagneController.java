@@ -39,10 +39,6 @@ public class CampagneController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-    @GetMapping("/utilisateur/{id}")
-    public UtilisateurDTO getUtilisateurInfo(@PathVariable String id) {
-        return campagneService.getInfosUtilisateurPourCampagne(id);
-    }
 
     @PostMapping("/add")
     public ResponseEntity<Campagne> ajouterCampagne(@RequestBody CampagneRequestDTO dto ,@RequestHeader("userId") String userId) {
