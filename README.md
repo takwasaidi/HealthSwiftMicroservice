@@ -1,67 +1,38 @@
-<h1 align="center">🌟 Web-Based Donation & Campaign Management System 🌟</h1>
+# 🌟 Gestion des Matériaux - Documentation
+
+Bienvenue dans l'univers de la gestion des dons matériels ! Ce microservice vous permet de gérer efficacement les équipements médicaux, médicaments, et autres ressources essentielles pour le système de santé.
 
 ---
 
-## 📌 About the Project
+## 🚀 Introduction
 
-A *web-based system* to facilitate *donations*, manage *campaigns/events*, and foster *donor engagement* through *transparency* and *real-time updates*.
+Le microservice **material-service** est conçu pour simplifier la gestion des dons matériels. Que ce soit pour ajouter un nouveau don, consulter les ressources disponibles, ou mettre à jour les informations, tout est à portée de main grâce à des endpoints RESTful intuitifs.
 
----
-
-## 🎯 Main Goal
-
-Create a *seamless environment* for donors to:
-
-Contribute to causes  
-Track donations  
-Stay informed via integrated campaign/event management and notifications
-
+Prêt à faire une différence ? Commençons !
 
 ---
 
-## ✨ Features
+## 🔗 Endpoints du Microservice
 
-### 👥 User Management
-Register, authenticate, and manage roles:  
-ADMIN, DONATEUR, DIRECTEUR_COMPAGNE
+Voici la liste des endpoints disponibles pour interagir avec le microservice :
 
-### 📢 Campaigns
-Create, track, and manage fundraising campaigns with *goals* and *timelines*.
-
-### 💳 Donations
-Securely donate to campaigns, with *history tracking* and *receipts*.
-
-### 📅 Events &  Meetings
-Schedule and manage *events/meetings* with details like *location* and *objectives*.
-
-### 🔔 Notifications
-Real-time updates for:
-
-Donations  
-Event reminders  
-Campaign milestones
-
-
-### 📰 Newsfeed
-Publish updates (*Actualité*) with *themes*, *images*, and *targeted audiences*.
-
-### 📥 Requests
-Submit and track *donation requests* (*Demande*) with *status updates*.
+| Endpoint            | Description                           | Méthode HTTP | Exemple de Corps de Requête                                                                 |
+|---------------------|---------------------------------------|--------------|---------------------------------------------------------------------------------------------|
+| `/api/materials`    | Créer un nouveau don matériel         | POST         | ```json { "name": "Masques chirurgicaux", "description": "Lot de 100 masques", "quantity": 100, "donated_by": "Hôpital Central" } ``` |
+| `/api/materials`    | Récupérer tous les dons matériels     | GET          | -                                                                                           |
+| `/api/materials/{id}` | Récupérer un don matériel par son ID | GET          | -                                                                                           |
+| `/api/materials/{id}` | Mettre à jour un don matériel        | PUT          | ```json { "name": "Lit médicalisé", "description": "Lit avec accessoires", "quantity": 5, "donated_by": "Clinique Saint-Jean" } ``` |
+| `/api/materials/{id}` | Supprimer un don matériel            | DELETE       | -                                                                                           |
 
 ---
 
-## 🛠️ Technologies & Concepts
+## 🛠️ Comment Exécuter le Microservice
 
-- *Spring Boot / Node.js* (for microservices implementation)  
-- *API Gateway & Service Discovery*  
-- *Message Brokers*: Kafka, RabbitMQ, etc.  
-- *Containerization*: Docker, Kubernetes  
-- *Database Management*: SQL / NoSQL  
-- *Security*: Keycloak (Authentication & Authorization)  
-- *Frontend*: Angular Framework
+Pour exécuter le microservice **material-service**, suivez ces étapes simples :
 
----
-
-## 🎓 Acknowledgment
-
-This project is part of our academic training at *ESPRIT School of Engineering*, providing us with *hands-on experience* in modern software development and preparing us for *real-world industry challenges*.
+### Étape 1 : Configurez votre environnement
+- Assurez-vous d'avoir installé [Node.js](https://nodejs.org/) sur votre machine.
+- Installez les dépendances nécessaires en exécutant la commande suivante dans le répertoire du projet :
+  ```bash
+  npm install
+  npm start
