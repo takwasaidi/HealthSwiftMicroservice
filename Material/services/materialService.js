@@ -1,40 +1,47 @@
 const { query } = require('../models/materialModel');
 
 // Create a new material donation
-const createMaterial = async (materialData) => {
-    const { name, description, quantity, donated_by } = materialData;
-    const sql = 'INSERT INTO materials (name, description, quantity, donated_by) VALUES (?, ?, ?, ?)';
-    const result = await query(sql, [name, description, quantity, donated_by]);
-    return result.insertId; // Return the ID of the newly created material
+const createMaterial = async (materialData, userId) => {
+    const { name, description, quantity, campaign_id } = materialData;
+    const sql = `
+        INSERT INTO materials (name, description, quantity, donated_by, campaign_id) 
+        VALUES (?, ?, ?, ?, ?)
+    `;
+    const result = await query(sql, [name, description, quantity, userId, campaign_id]);
+    return result.insertId;
 };
 
-// Get all materials
-const getAllMaterials = async () => {
-    const sql = 'SELECT * FROM materials';
-    const results = await query(sql);
+// Get all materials for the authenticated donor
+const getAllMaterials = async (userId) => {
+    const sql = 'SELECT * FROM materials WHERE donated_by = ?';
+    const results = await query(sql, [userId]);
     return results;
 };
 
-// Get a material by ID
+// Get a material by ID (no restriction on ownership for now)
 const getMaterialById = async (id) => {
     const sql = 'SELECT * FROM materials WHERE id = ?';
     const results = await query(sql, [id]);
-    return results[0]; // Return the first matching record
+    return results[0];
 };
 
 // Update a material
-const updateMaterial = async (id, materialData) => {
-    const { name, description, quantity, donated_by } = materialData;
-    const sql = 'UPDATE materials SET name = ?, description = ?, quantity = ?, donated_by = ? WHERE id = ?';
-    const result = await query(sql, [name, description, quantity, donated_by, id]);
-    return result.affectedRows > 0; // Return true if update was successful
+const updateMaterial = async (id, materialData, userId) => {
+    const { name, description, quantity, campaign_id } = materialData;
+    const sql = `
+        UPDATE materials 
+        SET name = ?, description = ?, quantity = ?, campaign_id = ?
+        WHERE id = ? AND donated_by = ?
+    `;
+    const result = await query(sql, [name, description, quantity, campaign_id, id, userId]);
+    return result.affectedRows > 0;
 };
 
 // Delete a material
-const deleteMaterial = async (id) => {
-    const sql = 'DELETE FROM materials WHERE id = ?';
-    const result = await query(sql, [id]);
-    return result.affectedRows > 0; // Return true if deletion was successful
+const deleteMaterial = async (id, userId) => {
+    const sql = 'DELETE FROM materials WHERE id = ? AND donated_by = ?';
+    const result = await query(sql, [id, userId]);
+    return result.affectedRows > 0;
 };
 
 module.exports = {

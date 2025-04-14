@@ -44,6 +44,10 @@ spring:
           uri: lb://donation-server
           predicates:
             - Path=/api/don/**
+        - id: material-service
+          uri: lb://material-service
+          predicates:
+            - Path=/api/materials/**
 eureka:
   instance:
     hostname: localhost

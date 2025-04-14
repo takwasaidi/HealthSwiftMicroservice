@@ -1,0 +1,29 @@
+<div class="container mt-4" *ngIf="material">
+    <div class="card">
+      <img [src]="'/assets/uploads/' + material.image" class="card-img-top" *ngIf="material.image" />
+  
+      <div class="card-body">
+        <h3>{{ material.name }}</h3>
+        <p><strong>Description :</strong> {{ material.description }}</p>
+        <p><strong>Quantité :</strong> {{ material.quantity }}</p>
+        <p><strong>Donné par :</strong> {{ material.donated_by }}</p>
+  
+        <!-- Custom buttons -->
+        <div class="mt-3 d-flex justify-content-between">
+          <button class="btn text-white"
+                  [style.backgroundColor]="'rgb(56, 141, 168)'"
+                  (click)="onUpdate()">
+            📝 Modifier
+          </button>
+  
+          <button class="btn"
+                  [style.color]="'rgb(56, 141, 168)'"
+                  [style.border]="'1px solid rgb(56, 141, 168)'"
+                  (click)="onDelete()">
+            🗑 Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

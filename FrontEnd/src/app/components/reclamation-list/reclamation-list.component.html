@@ -1,0 +1,28 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Liste des Réclamations / <a [routerLink]="['/reclamations/add']"><h2>Créer une Réclamation</h2></a></h2>
+  
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let reclamation of reclamations">
+        <div class="card h-100 shadow-sm">
+          <!-- Image de réclamation (optional) -->
+  
+          <div class="card-body">
+            <h5 class="card-title">Réclamation #{{ reclamation.id }}</h5>
+            <p class="card-text"><strong>Titre:</strong> {{ reclamation.titre }}</p>
+            <p class="card-text"><strong>Date de création:</strong> {{ reclamation.dateCreation | date:'dd/MM/yyyy' }}</p>
+            <p class="card-text"><strong>Statut:</strong> {{ reclamation.statut }}</p>
+            <p class="card-text"><strong>Type:</strong> {{ reclamation.type }}</p>
+  
+            <!-- Icons for Update and Delete actions, aligned to the right -->
+            <div class="d-flex justify-content-end mt-3">
+              <!-- Update icon -->
+              <a [routerLink]="['/reclamations/', reclamation.id]" class="btn btn-outline-primary btn-sm me-2" title="Mettre à jour">
+                <i>Voir les detail</i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

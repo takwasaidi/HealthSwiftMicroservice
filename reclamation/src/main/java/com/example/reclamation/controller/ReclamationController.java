@@ -10,45 +10,33 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/reclamations")
-@CrossOrigin(origins = "*")
 public class ReclamationController {
 
     @Autowired
     private ReclamationService reclamationService;
 
     @GetMapping
-    public List<Reclamation> getAllReclamations() {
-        return reclamationService.getAllReclamations();
+    public List<Reclamation> getAllReclamations(@RequestHeader("userId")String userId) {
+        return reclamationService.getAllReclamations(userId);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Reclamation> getReclamationById(@PathVariable Long id) {
-        return reclamationService.getReclamationById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public Reclamation getReclamationById(@PathVariable Long id) {
+        return reclamationService.getReclamationById(id);
     }
 
     @PostMapping
-    public Reclamation createReclamation(@RequestBody Reclamation reclamation) {
-        return reclamationService.createReclamation(reclamation);
+    public Reclamation createReclamation(@RequestBody Reclamation reclamation , @RequestHeader("userId") String userId) {
+        return reclamationService.createReclamation(reclamation,userId);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Reclamation> updateReclamation(@PathVariable Long id, @RequestBody Reclamation reclamation) {
-        Reclamation updated = reclamationService.updateReclamation(id, reclamation);
-        if (updated != null) {
-            return ResponseEntity.ok(updated);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public Reclamation updateReclamation(@PathVariable Long id, @RequestBody Reclamation reclamation) {
+        return reclamationService.updateReclamation(id, reclamation);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteReclamation(@PathVariable Long id) {
-        if (reclamationService.deleteReclamation(id)) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public boolean deleteReclamation(@PathVariable Long id) {
+        return reclamationService.deleteReclamation(id);
     }
 }

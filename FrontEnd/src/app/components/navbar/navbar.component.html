@@ -14,9 +14,16 @@
         <li><a routerLink="" *ngIf="!isLoggedIn" >Services</a></li>
         <li><a routerLink="" *ngIf="!isLoggedIn" >Pricing</a></li>
         <li><a routerLink="" *ngIf="!isLoggedIn"  >Contact</a></li>
-        <li><a routerLink="/dons" *ngIf="isLoggedIn">Donations</a></li>
+        <li *ngIf="isLoggedIn" class="dropdown"><a href="#">
+          <span>
+          </span>Donations<i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a routerLink="/dons">Donations</a></li>
+            <li><a routerLink="/materials">Material Donations</a></li>
+          </ul>
+        </li>
         <li><a routerLink="/campagne" *ngIf="isLoggedIn" >Camponies</a></li>
-        <li><a routerLink="/interviews" *ngIf="isLoggedIn" >Interview</a></li>
+        <li><a routerLink="/reclamations" *ngIf="isLoggedIn" >Reclamations</a></li>
         <li><a routerLink="" *ngIf="isLoggedIn" >Pricing</a></li>
         <li><a routerLink="" *ngIf="isLoggedIn"  >Contact</a></li>
         <li *ngIf="isLoggedIn" class="dropdown"><a href="#">
