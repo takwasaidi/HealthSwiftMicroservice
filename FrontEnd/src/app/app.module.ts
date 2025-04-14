@@ -50,6 +50,7 @@ import { DemandeListComponent } from './components/demande-list/demande-list.com
 import { DemandeAddComponent } from './components/demande-add/demande-add.component';
 import { DemandeUpdateComponent } from './components/demande-update/demande-update.component';
 import { DonDetailsComponent } from './components/don-details/don-details.component';
+import { EvenementComponent } from './components/evenement/evenement.component';
 
 
 @NgModule({
@@ -79,7 +80,9 @@ import { DonDetailsComponent } from './components/don-details/don-details.compon
     DemandeListComponent,
     DemandeAddComponent,
     DemandeUpdateComponent,
-    DonDetailsComponent
+    DonDetailsComponent,
+    EditDonComponent,
+    EvenementComponent
   ],
   imports:[
     ReactiveFormsModule,
@@ -102,6 +105,7 @@ import { DonDetailsComponent } from './components/don-details/don-details.compon
     CalendarModule.forRoot({ provide: DateAdapter, useClass: MatNativeDateModule }),
     BrowserAnimationsModule,
     MatButtonModule,
+    FormsModule // Ajoutez FormsModule ici
   ],
   providers: [
     DatePipe, // ✅ Ajouté proprement ici

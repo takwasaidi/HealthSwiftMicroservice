@@ -10,6 +10,7 @@ import { CampagneDetailsComponent } from './components/campagne-details/campagne
 import { CampagneEditComponent } from './components/campagne-edit/campagne-edit.component';
 import { AddDonComponent } from './components/add-don/add-don.component';
 import { EditDonComponent } from './components/edit-don/edit-don.component';
+import { EvenementComponent } from './components/evenement/evenement.component';
 import { MaterialComponent } from './components/material/material.component';
 import { MaterialDetailsComponent } from './components/material-details/material-details.component';
 import { EditMaterialComponent } from './components/edit-material/edit-material.component';
@@ -54,6 +55,22 @@ const routes: Routes = [
 { path: 'demandeAdd', component: DemandeAddComponent },
 { path: 'demandeAdd/:donId', component: DemandeAddComponent },
 { path: 'demandeUpdate/:id', component: DemandeUpdateComponent },
+  {
+    path: 'campagnes/update/:id',
+    component: CampagneEditComponent
+  },
+  {
+    path: 'dons',
+    component: DonComponent
+  }
+  ,
+  {
+    path: 'donsAdd',
+    component: AddDonComponent
+  }
+,
+{ path: 'don/update/:id', component: EditDonComponent },
+{path:'evenement',component:EvenementComponent},
   { path: '', redirectTo: '/', pathMatch: 'full' }
 ];
 

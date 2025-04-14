@@ -6,8 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Base64;
+import java.util.List;
+import java.util.Map;
 @RestController
 @RequestMapping("/api/evenement")
 public class EvenementController {
@@ -53,6 +63,16 @@ public class EvenementController {
     @PostMapping("/search")
     public Evenement getEvenementByTitre(@RequestBody String titre) {
         return evenementService.getEvenementByTitre(titre);
+    }
+
+    @PostMapping("/upload")
+    public ResponseEntity<Map<String, String>> uploadImage(@RequestParam("file") MultipartFile file) throws IOException {
+        String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+        Path path = Paths.get("uploads/" + fileName);
+        Files.createDirectories(path.getParent());
+        Files.write(path, file.getBytes());
+        String imageUrl = "http://localhost:8093/uploads/" + fileName;
+        return ResponseEntity.ok(Map.of("url", imageUrl));
     }
 
     }

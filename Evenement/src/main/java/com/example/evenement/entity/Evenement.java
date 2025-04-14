@@ -22,5 +22,6 @@ public class Evenement {
     private String lieu;
     private int duree;
     private String objective;
+    @Column(columnDefinition = "TEXT")
     private String image;
 }
