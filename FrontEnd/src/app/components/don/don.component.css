@@ -15,4 +15,19 @@
     background-color: rgb(119, 182, 202);
     color: white;
   }
+  .btn-custom {
+    background-color: rgb(119, 182, 202);
+    color: white;
+    border: none;
+    transition: 0.3s;
+  }
+  
+  .btn-custom:hover {
+    background-color: rgb(99, 162, 182);
+  }
+  .hover-shadow:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+    transition: all 0.2s ease-in-out;
+  }
   

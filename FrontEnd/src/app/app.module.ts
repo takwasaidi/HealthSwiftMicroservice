@@ -45,6 +45,11 @@ import { ReclamationListComponent } from './components/reclamation-list/reclamat
 import { ReclamationAddComponent } from './components/reclamation-add/reclamation-add.component';
 import { ReclamationEditComponent } from './components/reclamation-edit/reclamation-edit.component';
 import { ReclamationDetailComponent } from './components/reclamation-details/reclamation-details.component';
+import { CampagneAddComponent } from './components/campagne-add/campagne-add.component';
+import { DemandeListComponent } from './components/demande-list/demande-list.component';
+import { DemandeAddComponent } from './components/demande-add/demande-add.component';
+import { DemandeUpdateComponent } from './components/demande-update/demande-update.component';
+import { DonDetailsComponent } from './components/don-details/don-details.component';
 
 
 @NgModule({
@@ -68,7 +73,13 @@ import { ReclamationDetailComponent } from './components/reclamation-details/rec
     ReclamationListComponent,
     ReclamationAddComponent,
     ReclamationEditComponent,
-    ReclamationDetailComponent
+    ReclamationDetailComponent,
+    EditDonComponent,
+    CampagneAddComponent,
+    DemandeListComponent,
+    DemandeAddComponent,
+    DemandeUpdateComponent,
+    DonDetailsComponent
   ],
   imports:[
     ReactiveFormsModule,
@@ -94,7 +105,7 @@ import { ReclamationDetailComponent } from './components/reclamation-details/rec
   ],
   providers: [
     DatePipe, // ✅ Ajouté proprement ici
-  
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

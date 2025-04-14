@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -22,6 +23,8 @@ public class Don {
     private String Montant;
     private LocalDate date_remise;
     private String type;
+    private String utilisateur_id;
    @ManyToOne
     private Campagne campagne;
+
 }

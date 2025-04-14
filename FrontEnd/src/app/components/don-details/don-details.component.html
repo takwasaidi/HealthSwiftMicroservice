@@ -1,0 +1,23 @@
+<div class="container mt-4" *ngIf="donData">
+    <div class="card shadow p-3 mb-4">
+      <h4>Détails du Don</h4>
+      <p><strong>Type:</strong> {{ donData.type }}</p>
+      <p><strong>Montant:</strong> {{ donData.montant }}</p>
+      <p><strong>Date Remise:</strong> {{ donData.dateRemise || 'Non défini' }}</p>
+  
+      <div *ngIf="donData.campagne">
+        <p><strong>Campagne:</strong> {{ donData.campagne.titre }}</p>
+      </div>
+    </div>
+  
+    <div *ngIf="donData.demandes?.length">
+      <h5>Demandes Associées</h5>
+      <div *ngFor="let demande of donData.demandes" class="card mb-2 shadow-sm">
+        <div class="card-body">
+          <h5>{{ demande.titre }}</h5>
+          <p>{{ demande.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
