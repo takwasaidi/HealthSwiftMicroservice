@@ -1,7 +1,7 @@
 package com.example.donation.service;
 
 import com.example.donation.client.DemandeClient;
-import com.example.donation.client.UtilisateurClient;
+import com.example.donation.client.UserClient;
 import com.example.donation.entity.*;
 import com.example.donation.repository.CampagneRepository;
 import com.example.donation.repository.DonRepository;
@@ -22,6 +22,11 @@ public class DonService {
 
     @Autowired
     private DemandeClient demandeClient;
+    @Autowired
+    private UserClient userClient;
+
+    @Autowired
+    private EmailService emailService;
 
     public DonWithDemandesDTO getDonWithDemandes(Long donId) {
         // Récupérer le Don en fonction de son ID
@@ -48,12 +53,36 @@ public class DonService {
         return donRepository.findById(id);
     }
 
-    public Don createDon(Don don , Long idCampagne) {
+    public Don createDon(Don don , Long idCampagne , String userId) {
         Campagne campagne = campagneRepository.findById(idCampagne)
-                .orElseThrow(() -> new EntityNotFoundException("Catégorie non trouvée"));
-         don.setCampagne(campagne);
-        return donRepository.save(don);
+                .orElseThrow(() -> new EntityNotFoundException("Campagne non trouvée"));
+
+        don.setCampagne(campagne);
+        don.setUtilisateur_id(userId);
+        Don savedDon = donRepository.save(don);
+
+        try {
+            String email = userClient.getUserEmail(userId);
+            System.out.println("Email récupéré pour " + userId + " : " + email);
+
+            if (email != null && !email.isBlank()) {
+                emailService.sendThankYouEmail(
+                        email,
+                        userId,
+                        String.valueOf(savedDon.getMontant()),
+                        campagne.getTitre()
+                );
+            } else {
+                System.err.println("Email introuvable pour l'utilisateur : " + userId);
+            }
+
+        } catch (Exception e) {
+            System.err.println("Erreur lors de l'envoi de mail pour l'utilisateur " + userId + " : " + e.getMessage());
+        }
+
+        return savedDon;
     }
+
 
     public Don updateDon(Long id, Don updatedDon) {
         return donRepository.findById(id).map(don -> {
