@@ -1,67 +1,222 @@
-<h1 align="center">🌟 Web-Based Donation & Campaign Management System 🌟</h1>
+# 📢 Reclamation Module
+
+This module is part of a larger system and is responsible for managing user reclamations (complaints or requests). It allows users to submit, view, update, and delete reclamations. It includes both a Spring Boot backend and an Angular frontend.
 
 ---
 
-## 📌 About the Project
+## 🔧 Technologies Used
 
-A *web-based system* to facilitate *donations*, manage *campaigns/events*, and foster *donor engagement* through *transparency* and *real-time updates*.
+### Backend (Spring Boot)
 
----
+- Java 17+
+- Spring Boot 
+- Spring Data JPA
+- Spring Web
+- Lombok
+- MySQL
+- Maven
+- Eureka (Discovery Server)
+- API Gateway
+- Spring Security
 
-## 🎯 Main Goal
+### Frontend (Angular)
 
-Create a *seamless environment* for donors to:
-
-Contribute to causes  
-Track donations  
-Stay informed via integrated campaign/event management and notifications
-
-
----
-
-## ✨ Features
-
-### 👥 User Management
-Register, authenticate, and manage roles:  
-ADMIN, DONATEUR, DIRECTEUR_COMPAGNE
-
-### 📢 Campaigns
-Create, track, and manage fundraising campaigns with *goals* and *timelines*.
-
-### 💳 Donations
-Securely donate to campaigns, with *history tracking* and *receipts*.
-
-### 📅 Events &  Meetings
-Schedule and manage *events/meetings* with details like *location* and *objectives*.
-
-### 🔔 Notifications
-Real-time updates for:
-
-Donations  
-Event reminders  
-Campaign milestones
-
-
-### 📰 Newsfeed
-Publish updates (*Actualité*) with *themes*, *images*, and *targeted audiences*.
-
-### 📥 Requests
-Submit and track *donation requests* (*Demande*) with *status updates*.
+- Angular 
+- Angular Reactive Forms
+- Bootstrap 
+- Angular HTTPClient
+- Angular Router
 
 ---
 
-## 🛠️ Technologies & Concepts
+## 🚀 Getting Started
 
-- *Spring Boot / Node.js* (for microservices implementation)  
-- *API Gateway & Service Discovery*  
-- *Message Brokers*: Kafka, RabbitMQ, etc.  
-- *Containerization*: Docker, Kubernetes  
-- *Database Management*: SQL / NoSQL  
-- *Security*: Keycloak (Authentication & Authorization)  
-- *Frontend*: Angular Framework
+### Backend Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/takwasaidi/HealthSwiftMicroservice.git
+   cd HealthSwiftMicroservice
+   ```
+
+2. **Set up the database:**
+
+   - Create a MySQL database called `healthswift`.
+
+3. **Configure `application.properties`:**
+   ```properties
+   spring.datasource.url=jdbc:mysql://localhost:3306/healthswift
+   spring.datasource.username=root
+   spring.datasource.password=
+   spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+   spring.jpa.hibernate.ddl-auto=update
+   spring.jpa.show-sql=true
+   spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+   ```
+
+4. **Run the application:**
+   ```bash
+   ./mvnw spring-boot:run
+   ```
+   Or from your IDE. The app runs on `http://localhost:8222`.
 
 ---
 
-## 🎓 Acknowledgment
+### Frontend Setup
 
-This project is part of our academic training at *ESPRIT School of Engineering*, providing us with *hands-on experience* in modern software development and preparing us for *real-world industry challenges*.
+1. **Navigate to the frontend project:**
+   ```bash
+   cd frontend
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Run the Angular app:**
+   ```bash
+   ng serve
+   ```
+   Visit `http://localhost:4200` in your browser.
+
+---
+
+## 📬 API Endpoints
+
+> All endpoints require a `userId` to be passed via HTTP headers by the gateway.
+
+| Method | Endpoint               | Description               |
+|--------|------------------------|---------------------------|
+| GET    | `/reclamations`        | Get all reclamations      |
+| GET    | `/reclamations/{id}`   | Get a reclamation by ID   |
+| POST   | `/reclamations`        | Create a new reclamation  |
+| PUT    | `/reclamations/{id}`   | Update a reclamation      |
+| DELETE | `/reclamations/{id}`   | Delete a reclamation      |
+
+---
+
+## 🧪 Testing with Postman
+
+### Headers
+
+Make sure to always include:
+
+```
+userId: 1
+Content-Type: application/json
+```
+
+### Sample POST Request
+
+**POST** `http://localhost:8222/reclamations`
+
+```json
+{
+  "titre": "Connexion lente",
+  "description": "Ma connexion est très lente depuis 3 jours.",
+  "statut": "En attente",
+  "type": "Technique"
+}
+```
+
+---
+
+### Sample PUT Request
+
+**PUT** `http://localhost:8222/reclamations/1`
+
+```json
+{
+  "titre": "Connexion lente - mise à jour",
+  "description": "Problème toujours présent.",
+  "statut": "En attente",
+  "type": "Technique"
+}
+```
+
+---
+
+### Sample GET Request
+
+**GET** `http://localhost:8222/reclamations`
+
+### Sample DELETE Request
+
+**DELETE** `http://localhost:8222/reclamations/1`
+
+---
+
+## 🖼️ Frontend Form Preview
+
+The Angular UI form to add a new reclamation looks like this:
+
+```html
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <form [formGroup]="reclamationForm" (ngSubmit)="onSubmit()"
+        class="p-5 rounded-4 shadow-lg"
+        style="width: 100%; max-width: 600px; background-color: #ffffff; border: 1px solid #dee2e6;">
+  
+    <h2 class="text-center mb-4" style="color: rgb(56, 141, 168); font-weight: bold;">
+      Ajouter une Réclamation
+    </h2>
+
+    <div class="form-group mb-4">
+      <label for="titre" class="form-label fw-semibold">Titre</label>
+      <input id="titre" formControlName="titre" placeholder="Titre de la réclamation" class="form-control form-control-lg rounded-3" />
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="description" class="form-label fw-semibold">Description</label>
+      <textarea id="description" formControlName="description" placeholder="Description de la réclamation" class="form-control form-control-lg rounded-3"></textarea>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="statut" class="form-label fw-semibold">Statut</label>
+      <select id="statut" formControlName="statut" class="form-control form-control-lg rounded-3">
+        <option value="" disabled selected>Choisir un statut</option>
+        <option value="En attente">En attente</option>
+        <option value="Traitée">Traitée</option>
+        <option value="Rejetée">Rejetée</option>
+      </select>
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="type" class="form-label fw-semibold">Type</label>
+      <select id="type" formControlName="type" class="form-control form-control-lg rounded-3">
+        <option value="" disabled selected>Choisir un type</option>
+        <option value="Technique">Technique</option>
+        <option value="Administratif">Administratif</option>
+        <option value="Autre">Autre</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-lg w-100"
+            style="background-color: rgb(56, 141, 168); color: white; font-weight: bold;">
+      Ajouter la Réclamation
+    </button>
+  </form>
+</div>
+```
+
+---
+
+## 📁 Folder Structure
+
+```
+reclamation-service/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/example/reclamation/
+│   │   │       ├── controller/
+│   │   │       ├── model/
+│   │   │       ├── repository/
+│   │   │       ├── service/
+│   │   │       └── ReclamationApplication.java
+│   │   └── resources/
+│   │       └── application.yml
+```
+
+
+For questions or contributions, feel free to open an issue or reach out to the maintainer.
