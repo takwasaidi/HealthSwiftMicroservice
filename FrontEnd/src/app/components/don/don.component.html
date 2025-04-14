@@ -1,7 +1,8 @@
 <div class="container mt-4">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h2 class="mb-0">Liste des Campagnes</h2>
-    <a routerLink="/donsAdd" class="btn btn-custom">+ Faire un don</a>
+    <h3>+ Faire un don</h3>
+    <a routerLink="/donsAdd" class="btn btn-custom">Monétaire</a> / <a [routerLink]="['/materialsAdd']"><h2>Materials</h2></a>
   </div>
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let don of dons">
@@ -30,6 +31,8 @@
               <i class="fas fa-edit"></i>
             </a>
 
+
+            <!-- Icône de suppression -->
             <button (click)="deleteDon(don.id)" class="btn btn-outline-danger btn-sm" title="Supprimer">
               <i class="fas fa-trash-alt"></i>
             </button>
