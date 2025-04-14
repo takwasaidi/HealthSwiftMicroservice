@@ -3,7 +3,17 @@ spring:
     import: optional:configserver:http://localhost:8888
   application:
     name: donation-server
-
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: stakwa336@gmail.com
+    password: iabspyodwscbunll
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 eureka:
   client:
     service-url:
@@ -12,5 +22,6 @@ eureka:
 
 server:
   port: 8092
-upload:
-  directory: C:/Users/TAYSSIR/Desktop/takwamicro/healthswiftneww/HealthSwiftMicroservice/FrontEnd/src/assets/uploads
+application:
+  config:
+    users-url: http://localhost:8096/api/users

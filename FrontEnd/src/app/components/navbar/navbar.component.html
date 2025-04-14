@@ -14,9 +14,17 @@
         <li><a routerLink="" *ngIf="!isLoggedIn" >Services</a></li>
         <li><a routerLink="" *ngIf="!isLoggedIn" >Pricing</a></li>
         <li><a routerLink="" *ngIf="!isLoggedIn"  >Contact</a></li>
-        <li><a routerLink="/dons" *ngIf="isLoggedIn">Donations</a></li>
+        <li *ngIf="isLoggedIn" class="dropdown"><a href="#">
+          <span>
+          </span>Donations<i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <ul>
+            <li><a routerLink="/dons">Donations</a></li>
+            <li><a routerLink="/materials">Material Donations</a></li>
+          </ul>
+        </li>
         <li><a routerLink="/campagne" *ngIf="isLoggedIn" >Camponies</a></li>
-        <li><a routerLink="/interviews" *ngIf="isLoggedIn" >Interview</a></li>
+        <li><a routerLink="/reclamations" *ngIf="isLoggedIn" >Reclamations</a></li>
+        <li><a routerLink="/demandes" *ngIf="isLoggedIn" >Requests</a></li>
         <li><a routerLink="/evenement"  >Evenement</a></li>
         <li><a routerLink="" *ngIf="isLoggedIn" >Pricing</a></li>
         <li><a routerLink="" *ngIf="isLoggedIn"  >Contact</a></li>
@@ -39,14 +47,14 @@
             <span *ngIf="notificationCount > 0" class="badge">{{ notificationCount }}</span>
           </button>
         </div>
-        
+
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-    
-  
-       
-     
-      
+
+
+
+
+
     </nav>
 
 
@@ -55,8 +63,8 @@
     <a *ngIf="!isLoggedIn" class="btn-getstarted" routerLink="/sign-up">Join Us</a>
 
   </div>
- 
-  
+
+
 </header>
 <!-- Panneau de notifications -->
 
@@ -66,7 +74,7 @@
     <button (click)="toggleNotifications()">Close</button>
   </div>
   <div *ngIf="notifications.length === 0" class="no-notifications">No new notifications</div>
-  
+
   <!-- Liste des notifications -->
   <div *ngFor="let notification of notifications" class="notification-item">
     <!-- Utiliser [innerHTML] pour afficher du contenu HTML -->

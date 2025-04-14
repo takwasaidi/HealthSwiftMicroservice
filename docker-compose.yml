@@ -88,7 +88,7 @@ services:
       - microservices-network
 
   evenement:
-    build: ./donation
+    build: ./Evenement
     image: backend-evenement-service:latest
     container_name: evenement-service
     ports:

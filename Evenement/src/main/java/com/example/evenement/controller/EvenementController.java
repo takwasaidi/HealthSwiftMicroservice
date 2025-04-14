@@ -19,7 +19,7 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 @RestController
-@RequestMapping("/api/evenementactualite")
+@RequestMapping("/api/evenement")
 public class EvenementController {
     @Autowired
     private EvenementService evenementService;

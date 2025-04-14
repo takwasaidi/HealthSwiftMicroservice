@@ -28,6 +28,6 @@ public class Reclamation {
 
     private String type; // Exemple : "Technique", "Administratif", "Autre"
 
-    private Long utilisateurId; // ou un objet User si tu veux une relation
+    private String userId; // ou un objet User si tu veux une relation
 
 }

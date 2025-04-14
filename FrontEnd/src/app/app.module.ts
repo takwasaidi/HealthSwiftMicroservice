@@ -9,6 +9,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 // Import Angular Material Modules
 import { MatButtonModule } from '@angular/material/button';
@@ -36,6 +37,19 @@ import { AddDonComponent } from './components/add-don/add-don.component';
 import { DatePipe } from '@angular/common';
 import { DonComponent } from './components/don/don.component';
 import { EditDonComponent } from './components/edit-don/edit-don.component';
+import { AddMaterialsComponent } from './components/add-materials/add-materials.component';
+import { EditMaterialComponent } from './components/edit-material/edit-material.component';
+import { MaterialComponent } from './components/material/material.component';
+import { MaterialDetailsComponent } from './components/material-details/material-details.component';
+import { ReclamationListComponent } from './components/reclamation-list/reclamation-list.component';
+import { ReclamationAddComponent } from './components/reclamation-add/reclamation-add.component';
+import { ReclamationEditComponent } from './components/reclamation-edit/reclamation-edit.component';
+import { ReclamationDetailComponent } from './components/reclamation-details/reclamation-details.component';
+import { CampagneAddComponent } from './components/campagne-add/campagne-add.component';
+import { DemandeListComponent } from './components/demande-list/demande-list.component';
+import { DemandeAddComponent } from './components/demande-add/demande-add.component';
+import { DemandeUpdateComponent } from './components/demande-update/demande-update.component';
+import { DonDetailsComponent } from './components/don-details/don-details.component';
 import { EvenementComponent } from './components/evenement/evenement.component';
 
 
@@ -53,6 +67,21 @@ import { EvenementComponent } from './components/evenement/evenement.component';
     AddDonComponent,
     DonComponent,
     EditDonComponent,
+    AddMaterialsComponent,
+    EditMaterialComponent,
+    MaterialComponent,
+    MaterialDetailsComponent,
+    ReclamationListComponent,
+    ReclamationAddComponent,
+    ReclamationEditComponent,
+    ReclamationDetailComponent,
+    EditDonComponent,
+    CampagneAddComponent,
+    DemandeListComponent,
+    DemandeAddComponent,
+    DemandeUpdateComponent,
+    DonDetailsComponent,
+    EditDonComponent,
     EvenementComponent
   ],
   imports:[
@@ -60,6 +89,7 @@ import { EvenementComponent } from './components/evenement/evenement.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    CommonModule,
     MatButtonModule,
     MatToolbarModule,
     MatCardModule,
@@ -79,7 +109,7 @@ import { EvenementComponent } from './components/evenement/evenement.component';
   ],
   providers: [
     DatePipe, // ✅ Ajouté proprement ici
-  
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

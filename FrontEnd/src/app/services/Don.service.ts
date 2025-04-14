@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Don } from '../models/Don';
+import { DonDTO } from '../models/DonDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class DonService {
   private apiUrl = 'http://localhost:8222/api/don';
 
   constructor(private http: HttpClient) {}
+
+  getDonWithDemandes(id: number): Observable<DonDTO> {
+    return this.http.get<DonDTO>(`${this.apiUrl}/getDonWithDemandes/${id}`);
+  }
 
   getAllDons(): Observable<Don[]> {
     return this.http.get<Don[]>(`${this.apiUrl}`);

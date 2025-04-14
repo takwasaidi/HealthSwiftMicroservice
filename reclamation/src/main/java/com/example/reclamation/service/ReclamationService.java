@@ -5,6 +5,9 @@ import com.example.reclamation.repository.ReclamationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,15 +17,17 @@ public class ReclamationService {
     @Autowired
     private ReclamationRepository reclamationRepository;
 
-    public List<Reclamation> getAllReclamations() {
-        return reclamationRepository.findAll();
+    public List<Reclamation> getAllReclamations(String userId) {
+        return reclamationRepository.findAllByUserId(userId);
     }
 
-    public Optional<Reclamation> getReclamationById(Long id) {
-        return reclamationRepository.findById(id);
+    public Reclamation getReclamationById(Long id) {
+        return reclamationRepository.findById(id).orElse(null);
     }
 
-    public Reclamation createReclamation(Reclamation reclamation) {
+    public Reclamation createReclamation(Reclamation reclamation,String userId) {
+        reclamation.setUserId(userId);
+        reclamation.setStatut("En Attente");
         return reclamationRepository.save(reclamation);
     }
 
@@ -31,9 +36,7 @@ public class ReclamationService {
             reclamation.setTitre(updatedReclamation.getTitre());
             reclamation.setDescription(updatedReclamation.getDescription());
             reclamation.setStatut(updatedReclamation.getStatut());
-            reclamation.setDateCreation(updatedReclamation.getDateCreation());
             reclamation.setType(updatedReclamation.getType());
-            reclamation.setUtilisateurId(updatedReclamation.getUtilisateurId());
             return reclamationRepository.save(reclamation);
         }).orElse(null);
     }
